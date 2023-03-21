@@ -1,4 +1,4 @@
-
+import HeaderCartButton from "./HeaderCartButton";
 
 //importing the image and inserting in the img tag
 import  donutBuffet from "../../assets/background.jpg";
@@ -10,7 +10,7 @@ const Header = props => {
         <>
         <header className={styles.header}>
             <h1>uFood</h1>
-            <button>Cart</button>
+            <HeaderCartButton >Cart</HeaderCartButton>
         </header>
         <div className={styles['main-image']}>
             <img src={donutBuffet} alt="uFood" />
