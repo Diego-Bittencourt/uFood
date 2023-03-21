@@ -1,20 +1,16 @@
-import Header from "./Header";
 import styles from "./HeaderCartButton.module.css";
 import CartIcon from "../Cart/CartIcon";
 
-
-const HeaderCartButton = props => {
-
-
-    return (
-        <button className={styles.button}>
-            <span className={styles.icon}>
-                <CartIcon />
-            </span>
-            <span>{props.children}</span>
-            <span className={styles.badge}>3</span>
-        </button>
-    )
+const HeaderCartButton = (props) => {
+  return (
+    <button className={styles.button}>
+      <span className={styles.icon}>
+        <CartIcon />
+      </span>
+      <span>{props.children}</span>
+      <span className={styles.badge}>3</span>
+    </button>
+  );
 };
 
 export default HeaderCartButton;
