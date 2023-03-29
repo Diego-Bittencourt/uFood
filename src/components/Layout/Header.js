@@ -25,7 +25,7 @@ const Header = props => {
         <div className={styles['main-image']}>
             <img src={donutBuffet} alt="uFood" />
         </div>
-        { isCartVisible ? <Cart toggleCart={toggleCart}/> : null}
+        { isCartVisible && <Cart toggleCart={toggleCart}/> }
         </>
     )
 };
