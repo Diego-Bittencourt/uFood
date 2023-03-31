@@ -16,7 +16,7 @@ const cartReducer = (state, action) => {
     //push() and unshift() methods alter the existing array
     //concat returns a new array which is the ideal here
     //because helps react to track what's happening
-    const updateItems = state.item.concat(action.item);
+    const updateItems = state.items.concat(action.item);
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
     return {
