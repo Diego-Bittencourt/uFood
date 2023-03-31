@@ -13,14 +13,36 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
   //when the reducer function is triggered, check for what is the type and act accordingly
   if (action.type === "ADD") {
+    const updatedTotalAmount =
+      state.totalAmount + action.item.price * action.item.amount;
     //push() and unshift() methods alter the existing array
     //concat returns a new array which is the ideal here
     //because helps react to track what's happening
-    const updateItems = state.items.concat(action.item);
-    const updatedTotalAmount =
-      state.totalAmount + action.item.price * action.item.amount;
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
+
+    const existingCartItem = state.items[existingCartItemIndex];
+    let updatedItems;
+    
+    if (existingCartItem) {
+        const updatedItem = {
+            ...existingCartItem,
+            amount: existingCartItem.amount + action.item.amount,
+        };
+     
+
+        //instead of reassining only the fields needed, I'm overwriting the whole object
+        //to use the non-mutational approach
+        updatedItems = [...state.items];
+        updatedItems[existingCartItemIndex] = updatedItem;
+    } else {
+        updatedItems = state.items.concat(action.item);
+    }
+
+
     return {
-      items: updateItems,
+      items: updatedItems,
       totalAmount: updatedTotalAmount,
     };
   }
